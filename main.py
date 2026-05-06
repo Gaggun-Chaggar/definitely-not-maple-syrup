@@ -45,7 +45,7 @@ def post_submission():
 
     response = requests.post(
         url=submission["url"],
-        body=submission["body"],
+        data=submission["body"],
         headers=submission["headers"]
     )
     
