@@ -1,0 +1,37 @@
+name: execute
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  execute:
+    name: python
+    runs-on: ubuntu-latest
+    environment:
+      name: Run
+      deployment: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: "Set up Python"
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: ".python-version"
+
+      - name: Install UV
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b
+
+      - name: Install project
+        run: uv sync --locked --all-extras --dev
+
+      - name: Run Command
+        run: uv run main.py
+        env:
+          API_URL: ${{ vars.API_URL }}
+          NAME: ${{ vars.NAME }}
+          EMAIL: ${{ secrets.EMAIL}}
+          RESUME_LINK: ${{ vars.RESUME_LINK }}
+          FORGE_BASE_URL: ${{ vars.FORGE_BASE_URL }}
+          SIGNING_SECRET: ${{ secrets.SIGNING_SECRET }}

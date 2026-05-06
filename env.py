@@ -1,0 +1,16 @@
+from os import environ
+
+API_URL = environ["API_URL"]
+NAME = environ["NAME"]
+EMAIL = environ["EMAIL"]
+RESUME_LINK = environ["RESUME_LINK"]
+FORGE_BASE_URL = environ["FORGE_BASE_URL"]
+SIGNING_SECRET = environ["SIGNING_SECRET"]
+
+# Externally defined
+GITHUB_REPOSITORY = environ["GITHUB_REPOSITORY"]
+GITHUB_RUN_ID = environ["GITHUB_RUN_ID"]
+
+
+REPOSITORY_LINK = f"{FORGE_BASE_URL}/{GITHUB_REPOSITORY}"
+ACTION_RUN_LINK = f"{REPOSITORY_LINK}/actions/runs/{GITHUB_RUN_ID}"
