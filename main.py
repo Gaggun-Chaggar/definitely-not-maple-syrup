@@ -51,6 +51,8 @@ def post_submission():
     
     if response.status_code != 200:
         print('failure!')
+        print(response.status_code)
+        print(response.text)
         sys.exit(1)
         return
     
