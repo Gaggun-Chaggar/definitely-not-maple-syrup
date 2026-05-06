@@ -23,7 +23,7 @@ def prepare_submission():
         "action_run_link": env.ACTION_RUN_LINK
     }
 
-    body_as_json_str = json.dumps(body, ensure_ascii=False, sort_keys=True)
+    body_as_json_str = json.dumps(body, ensure_ascii=False, sort_keys=True, separators=(',', ':'))
 
     signed_sha256 = compute_signed_sha256(body_as_json_str)
 
@@ -58,7 +58,7 @@ def post_submission():
     
     response_body = response.json()
 
-    print(f"submission receipt = {response_body.receipt}")
+    print(f"submission receipt = {response_body["receipt"]}")
     
 
 def main():
