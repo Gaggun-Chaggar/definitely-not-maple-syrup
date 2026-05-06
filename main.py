@@ -23,7 +23,7 @@ def prepare_submission():
         "action_run_link": env.ACTION_RUN_LINK
     }
 
-    body_as_json_str = json.dumps(body, ensure_ascii=False)
+    body_as_json_str = json.dumps(body, ensure_ascii=False, sort_keys=True)
 
     signed_sha256 = compute_signed_sha256(body_as_json_str)
 
